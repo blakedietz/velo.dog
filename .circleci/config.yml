@@ -25,7 +25,10 @@ jobs:
 #             - ~/.cache/yarn
       - run:
           name: Build elm package
-          command: ~/.yarn/bin/elm-package install
+          command: elm package install --yes
+      - run:
+          name: Build elm package
+          command: elm-app build
 
 workflows:
   version: 2
