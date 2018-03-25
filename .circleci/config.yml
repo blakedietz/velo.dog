@@ -1,0 +1,34 @@
+
+dependencies:
+  override:
+    - yarn
+  cache_directories:
+      - ~/.cache/yarn
+
+version: 2
+jobs:
+  build:
+    working_directory: ~/repo
+    # The primary container is an instance of the first list image listed. Your build commands run in this container.
+    docker:
+      - image: circleci/node:9.9.0
+    steps:
+#      - checkout
+#      - restore_cache:
+#          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Globally install elm
+          command: yarn global add elm create-elm-app
+#      - save_cache:
+#          key: dependency-cache-{{ checksum "package.json" }}
+#          paths:
+#             - ~/.cache/yarn
+      - run:
+          name: Build elm package
+          command: ~/.yarn/bin/elm-package install
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
