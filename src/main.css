@@ -6,7 +6,7 @@ body {
 
 @font-face {
   font-family: lemonMilk;
-  src: url(/public/fonts/LemonMilk/LemonMilk.woff);
+  src: url(/fonts/LemonMilk/LemonMilk.woff);
 }
 
 .timer {
